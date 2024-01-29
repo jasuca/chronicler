@@ -1,0 +1,15 @@
+# Ignore Python bytecode
+*.py[cod]
+*.so
+
+# Ignore Python virtual environment
+.venv/
+
+# Ignore Python eggs
+*.egg-info/
+
+# Ignore macOS metadata
+.DS_Store
+
+# Ignore Xcode project files
+*.xcodeproj/*
