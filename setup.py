@@ -8,7 +8,7 @@ long_description = (here / 'README.md').read_text(encoding='utf-8') if (here / '
 setup(
     name='chronicler',
     version='0.1.0',
-    description='Chronicler is an innovative Python tool designed to streamline and automate the documentation process for development projects. Leveraging the power of Git and various language processing technologies, it provides an intuitive interface for tracking changes, generating comprehensive documentation, and ensuring seamless integration with existing version control workflows. Ideal for developers and teams looking to enhance their productivity and maintain clear, up-to-date documentation, Chronicler simplifies the complexities of project management and documentation.',
+    description='Chronicler is a Python tool that automates documentation in development projects. Utilizing Git and language processing technologies, it offers an intuitive interface for tracking changes and generating detailed documentation, seamlessly integrating with version control workflows. It\'s perfect for developers and teams aiming to boost productivity and maintain clear, current project documentation, thereby simplifying project management.',
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/jasuca/chronicler',
