@@ -2,6 +2,9 @@
 *.py[cod]
 *.so
 
+# Dist folder
+dist/
+
 # Ignore Python virtual environment
 .venv/
 
