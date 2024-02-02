@@ -1,7 +1,12 @@
 
-# Chronicler
+# ![Chronicler Logo](http://graphene-python.org/favicon.png) Chronicler ![PyPI - Version](https://img.shields.io/pypi/v/py-chronicler)
 
-Chronicler is an innovative Python tool designed to streamline and automate the documentation process for development projects. Leveraging the power of Git and various language processing technologies, it provides an intuitive interface for tracking changes, generating comprehensive documentation, and ensuring seamless integration with existing version control workflows. Ideal for developers and teams looking to enhance their productivity and maintain clear, up-to-date documentation, Chronicler simplifies the complexities of project management and documentation.
+
+## Introduction
+Chronicler is an innovative Python tool designed to streamline and automate the documentation process for development projects. By leveraging Git and various language processing technologies, it provides an intuitive interface for tracking changes, generating comprehensive documentation, and ensuring seamless integration with version control workflows.
+
+## Inspiration Behind the Name
+The name 'Chronicler' is inspired by the Resident Evil: The Umbrella Chronicles movie. Much like the movie chronicles key events in a thrilling narrative, our tool chronicles the development journey of your projects, ensuring every change and update is meticulously documented and easy to follow.
 
 ## Getting Started
 
@@ -34,13 +39,26 @@ pip install --editable .
 
 This command will install the package and its dependencies, allowing you to make changes to the code and see them reflected immediately.
 
-### Running Locally
+### Usage
 
-With the virtual environment activated and the package installed in editable mode, you can run Chronicler directly from the command line:
+To use Chronicler, run the following command:
 
 ```bash
-chronicler
+chronicler release [OPTIONS] LEFT_BRANCH RIGHT_BRANCH [PATH]
+chronicler commit [OPTIONS] [PATH]
 ```
+
+#### Options
+* commit   Generate commit description
+* release  Generate release notes
+* --llm [ollama|openai]: Select the Language Learning Model to use (e.g., ollama, openai).
+* --llm-model TEXT: Specify the model for ollama (e.g., llama2, mistral).
+* --help: Display the help message.
+
+#### Examples
+Comparing two branches: `chronicler release main develop /path/to/repo`
+
+Generate current repo commit: `chronicler commit`
 
 ## Contributing
 
