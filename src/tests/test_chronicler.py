@@ -28,7 +28,7 @@ def test_create_llm_openai_with_env(mock_env: None):
         # Add more assertions here as needed
 
 def test_create_llm_ollama():
-    with patch('chronicler.Ollama') as mock_ollama:
+    with patch('chronicler.OllamaLLM') as mock_ollama:
         create_llm('ollama', 'llama2')
         mock_ollama.assert_called_once()
 

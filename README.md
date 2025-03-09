@@ -60,6 +60,8 @@ Comparing two branches: `chronicler release main develop /path/to/repo`
 
 Generate current repo commit: `chronicler commit`
 
+Generate current repo commit using Ollama(mistral): `chronicler commit --llm=ollama --llm-model=mistral  .`
+
 ## Contributing
 
 We welcome contributions to the Chronicler project! If you have suggestions for improvements or want to contribute code, please follow these steps:

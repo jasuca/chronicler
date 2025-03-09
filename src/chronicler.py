@@ -1,7 +1,7 @@
 import os
 import click
 from git import Repo, GitCommandError
-from langchain_community.llms import Ollama
+from langchain_ollama.llms import OllamaLLM
 from langchain_core.documents import Document
 from langchain.prompts import PromptTemplate
 from langchain.chains.combine_documents import create_stuff_documents_chain
@@ -9,7 +9,7 @@ from langchain_openai import OpenAI
 
 # Functions
 
-def create_llm(llm: str, llm_model: str) -> OpenAI | Ollama:
+def create_llm(llm: str, llm_model: str) -> OpenAI | OllamaLLM:
     """
     Creates and returns the language model.
     :param llm: The name of the language model (e.g., 'openai', 'ollama').
@@ -25,7 +25,7 @@ def create_llm(llm: str, llm_model: str) -> OpenAI | Ollama:
         return OpenAI(openai_api_key=openai_api_key)
 
     elif llm == 'ollama':
-        return Ollama(model=llm_model)
+        return OllamaLLM(model=llm_model)
 
     raise ValueError(f"Unsupported LLM: {llm}")
 
