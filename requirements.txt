@@ -1,4 +1,4 @@
-GitPython==3.1.44
+GitPython==3.1.50
 langchain==0.3.20
 langchain-community==0.3.19
 langchain-openai==0.3.8
