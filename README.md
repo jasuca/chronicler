@@ -1,21 +1,27 @@
 
-# ![Chronicler Logo](http://graphene-python.org/favicon.png) Chronicler ![PyPI - Version](https://img.shields.io/pypi/v/py-chronicler)
+# Chronicler ![PyPI - Version](https://img.shields.io/pypi/v/py-chronicler)
 
 
 ## Introduction
 Chronicler is an innovative Python tool designed to streamline and automate the documentation process for development projects. By leveraging Git and various language processing technologies, it provides an intuitive interface for tracking changes, generating comprehensive documentation, and ensuring seamless integration with version control workflows.
 
-## Inspiration Behind the Name
-The name 'Chronicler' is inspired by the Resident Evil: The Umbrella Chronicles movie. Much like the movie chronicles key events in a thrilling narrative, our tool chronicles the development journey of your projects, ensuring every change and update is meticulously documented and easy to follow.
+Chronicler can draft commit descriptions from the current repository status and release notes from the difference between two Git branches. It supports local Ollama models by default and OpenAI models when `OPENAI_API_KEY` is configured.
 
 ## Getting Started
 
 ### Prerequisites
 
-- Python 3.6 or higher
+- Python 3.10 or higher
 - Git
+- uv
 
 ### Installation
+
+Install from PyPI:
+
+```bash
+uv tool install py-chronicler
+```
 
 Clone the repository:
 
@@ -24,20 +30,19 @@ git clone https://github.com/jasuca/chronicler.git
 cd chronicler
 ```
 
-Set up a virtual environment:
+Install the project and development tools with uv:
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows use 'venv\Scripts\activate'
+uv sync --group dev
 ```
 
-Install the package in editable mode:
+Run the CLI from the project checkout:
 
 ```bash
-pip install --editable .
+uv run chronicler --help
 ```
 
-This command will install the package and its dependencies, allowing you to make changes to the code and see them reflected immediately.
+`requirements.txt` is retained as a compatibility entry point for tools that still call `pip install -r requirements.txt`; project dependencies and release metadata live in `pyproject.toml`.
 
 ### Usage
 
@@ -51,8 +56,8 @@ chronicler commit [OPTIONS] [PATH]
 #### Options
 * commit   Generate commit description
 * release  Generate release notes
-* --llm [ollama|openai]: Select the Language Learning Model to use (e.g., ollama, openai).
-* --llm-model TEXT: Specify the model for ollama (e.g., llama2, mistral).
+* --llm [ollama|openai]: Select the language model provider.
+* --llm-model TEXT: Specify the provider model. The default is `llama2`.
 * --help: Display the help message.
 
 #### Examples
@@ -61,6 +66,41 @@ Comparing two branches: `chronicler release main develop /path/to/repo`
 Generate current repo commit: `chronicler commit`
 
 Generate current repo commit using Ollama(mistral): `chronicler commit --llm=ollama --llm-model=mistral  .`
+
+Generate release notes with OpenAI:
+
+```bash
+OPENAI_API_KEY=... chronicler release v0.1.1 main . --llm=openai --llm-model=gpt-3.5-turbo-instruct
+```
+
+### Development
+
+Run tests:
+
+```bash
+uv run pytest
+```
+
+Run the CI lint checks locally:
+
+```bash
+uv run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+uv run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+```
+
+Build release artifacts:
+
+```bash
+uv run python -m build
+```
+
+If you already synced the dev environment and want to avoid creating an isolated build environment, use:
+
+```bash
+uv build --no-build-isolation
+```
+
+The package is published to PyPI as `py-chronicler`. The console command installed by the package is `chronicler`.
 
 ## Contributing
 

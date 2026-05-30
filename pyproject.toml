@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "py-chronicler"
+version = "0.1.2"
+description = "Chronicler automates development documentation by using Git history and language models to generate commit descriptions and release notes."
+readme = "README.md"
+requires-python = ">=3.10,<4"
+license = "MIT"
+authors = [
+    { name = "Jacob Sunol", email = "contact@jasuca.com" },
+]
+keywords = ["development", "automation", "git", "release-notes", "commit-notes"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Build Tools",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "GitPython>=3.1.50",
+    "click>=8.4.1",
+    "langchain-classic>=1.0.7",
+    "langchain-core>=1.4.0",
+    "langchain-ollama>=1.1.0",
+    "langchain-openai>=1.2.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/jasuca/chronicler"
+Repository = "https://github.com/jasuca/chronicler"
+
+[project.scripts]
+chronicler = "chronicler:cli"
+
+[dependency-groups]
+dev = [
+    "build>=1.5.0",
+    "flake8>=7.3.0",
+    "pytest>=8.3.5",
+    "setuptools>=82.0.1",
+    "twine>=6.2.0",
+    "wheel>=0.47.0",
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+py-modules = ["chronicler"]
+
+[tool.uv]
+package = true
